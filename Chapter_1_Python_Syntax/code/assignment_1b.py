@@ -21,11 +21,10 @@ def filter_words(word_list, letter):
     Use filter to return the words from word_list which start with letter.
 
     Example:
-    >>> filter_words(["salumeria", "dandelion", "yamo", "doc loi", "rosamunde",
-                      "beretta", "ike's", "delfina"], "d")
+    >>> filter_words(["salumeria", "dandelion", "yamo", "doc loi", "rosamunde", "beretta", "ike's", "delfina"], "d")
     ['dandelion', 'doc loi', 'delfina']
     '''
-    pass
+    return [w for w in word_list if w[0]==letter]
 
 def factors(num):
     '''
@@ -34,7 +33,8 @@ def factors(num):
 
     Use filter to return all of the factors of num.
     '''
-    pass
+    if num > 0:
+        return list(filter(lambda x: num % x == 0, range(1,num+1)))
 
 def only_sorted(L):
     '''
@@ -48,11 +48,13 @@ def only_sorted(L):
     >>> only_sorted([[3, 4, 5], [4, 3, 5], [5, 6, 3], [5, 6, 7]])
     [[3, 4, 5], [5, 6, 7]]
     '''
-    pass
+    return list(filter(lambda x: x == sorted(x) or x == sorted(x, reverse = True), L))
 
 ###############################################################################
 #######                     Reduce
 ###############################################################################
+import functools
+
 def digits_to_num(digits):
     '''
     INPUT: list of integers
@@ -65,7 +67,7 @@ def digits_to_num(digits):
     >>> digits_to_num([5, 0, 3, 8])
     5038
     '''
-    pass
+    return functools.reduce(lambda x, y: 10*x + y, digits)
 
 def intersection_of_sets(list_of_sets):
     '''
@@ -77,6 +79,6 @@ def intersection_of_sets(list_of_sets):
 
     Example:
     >>> intersection_of_sets([{1, 2, 3}, {2, 3, 4}, {2, 5}])
-    set([2])
+    {2}
     '''
-    pass
+    return functools.reduce(lambda x, y: x & y, list_of_sets)

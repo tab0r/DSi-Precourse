@@ -9,6 +9,7 @@ Run "python -m doctest assignment_1a.py" at the command line to test your work.
 '''
 import numpy as np
 import pdb
+import string
 ###############################################################################
 #######                     Looking at Lists and Matrices
 ###############################################################################
@@ -39,7 +40,6 @@ def average_rows2(mat):
     >>> average_rows1([[4, 5, 2, 8], [3, 9, 6, 7]])
     [4.75, 6.25]
     '''
-    pdb.set_trace()
     a = list(map(np.mean, mat))
     return a
 
@@ -57,7 +57,8 @@ def sort_rows(mat):
     >>> M
     [[2, 4, 5, 8], [3, 6, 7, 9]]
     '''
-    pass
+    for row in mat:
+        row.sort()
 
 ###############################################################################
 #######                     Looking at Strings
@@ -72,9 +73,9 @@ def word_lengths1(phrase):
 
     Example:
     >>> word_lengths1("Welcome to the Data Science Immersive Program!")
-    [7, 2, 7, 8]
+    [7, 2, 3, 4, 7, 9, 8]
     '''
-    pass
+    return [len(word) for word in phrase.strip().split(' ')]
 
 def word_lengths2(phrase):
     '''
@@ -86,13 +87,20 @@ def word_lengths2(phrase):
 
     Example:
     >>> word_lengths2("Welcome to the Data Science Immersive Program!!")
-    [7, 2, 7, 8]
+    [7, 2, 3, 4, 7, 9, 9]
     '''
-    pass
+    return list(map(len, phrase.strip().split(' ')))
 
 ###############################################################################
 #######                     Looking at Integers
 ###############################################################################
+def even_odd0(x):
+    if x % 2 == 0:
+        return 'even'
+    else:
+        return 'odd'
+
+
 def even_odd1(L):
     '''
     INPUT: list of integers
@@ -105,7 +113,8 @@ def even_odd1(L):
     >>> even_odd1([6, 4, 1, 3, 8, 5])
     ['even', 'even', 'odd', 'odd', 'even', 'odd']
     '''
-    pass
+    # returns even correctly, not sure how to make it return odd
+    return [even_odd0(x) for x in L]
 
 def even_odd2(L):
     '''
@@ -119,4 +128,4 @@ def even_odd2(L):
     >>> even_odd2([6, 4, 1, 3, 8, 5])
     ['even', 'even', 'odd', 'odd', 'even', 'odd']
     '''
-    pass
+    return list(map(even_odd0, L))

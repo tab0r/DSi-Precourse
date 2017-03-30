@@ -25,7 +25,10 @@ def count_match_index(L):
     >>> count_match_index([0, 2, 2, 3, 6, 5])
     4
     '''
-    pass
+    count = 0
+    for i, x in enumerate(L):
+        if i == x: count += 1
+    return count
 
 def invert_list(L):
     '''
@@ -40,7 +43,10 @@ def invert_list(L):
     >>> invert_list(['a', 'b', 'c', 'd'])
     {'a': 0, 'c': 2, 'b': 1, 'd': 3}
     '''
-    pass
+    d = {}
+    for i, x in enumerate(L):
+        d[x] = i
+    return d
 
 ###############################################################################
 #######                     Zip

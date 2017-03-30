@@ -28,7 +28,8 @@ def shift_on_character(string, char):
     >>> shift_on_character("galvanize", "n")
     'nizegalva'
     '''
-    pass
+    idx = string.find(char)
+    return string[idx:]+string[0:idx]
 
 def is_palindrome(string):
     '''
@@ -44,7 +45,9 @@ def is_palindrome(string):
     >>> is_palindrome("the moon waxes poetic in sunlight")
     False
     '''
-    pass
+    for i in range(len(string)):
+        if string[i] != string[len(string)-1-i]: return False
+    return True
 
 ###############################################################################
 #######                     Looking at Lists
@@ -62,7 +65,17 @@ def alternate(L):
     >>> alternate(['a', 'b', 'c', 'd', 'e', 'f', 'g'])
     ['b', 'd', 'f', 'a', 'c', 'e', 'g']
     '''
-    pass
+    A = L[1:len(L):2]
+    B = L[0:len(L):2]
+    return A + B
+
+#some clever recursive function from people on the internet
+def interleave(lst1, lst2):
+    if not lst1:
+        return lst2
+    elif not lst2:
+        return lst1
+    return lst1[0:1] + interleave(lst2, lst1[1:])
 
 def shuffle(L):
     '''
@@ -77,4 +90,6 @@ def shuffle(L):
     >>> shuffle([1, 2, 3, 4, 5, 6])
     [1, 4, 2, 5, 3, 6]
     '''
-    pass
+    A = L[:len(L)//2]
+    B = L[len(L)//2:]
+    return interleave(A, B)
